@@ -1,0 +1,7 @@
+Most of this was straitforward. for a matrix, I had some trouble using rubies 
+built-in matrix so I just created one out of arrays: 
+
+self.matrix = Array.new(height) { |arr| Array.new(width) }
+
+this worked perfectly well. also as it defaulted all of the positions to nil
+it satisfied the 4th spec by default.
