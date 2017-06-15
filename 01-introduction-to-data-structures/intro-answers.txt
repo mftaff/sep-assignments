@@ -1,0 +1,28 @@
+1)
+
+My data structure allows developers to access and manipulate data in the following way. 
+By creating a class (a Line class or a Screen class etc) we create a system of 
+storing data in an expandable, manageable, but most importantly non-locked in way. 
+
+Using a class with methods/attributes allows one a framework to handle data. So for 
+example in the line example, if their are 20 amusement park rides, each with it's 
+own line, we can easily store/update/view the data for each line, by creating a class
+for each. This takes our data (a list of people in a line) and empowers it with methods
+like search join leave etc.
+
+
+2)
+
+To search for data in our examples we could use either the lineInstance.search(person) or 
+screenInstance.at(x,y)
+
+
+3)
+
+The line data structure could represent any kind of queue not just an amusement
+park ride. As a principle though (if you change what the line contains) than it 
+can be used for things like assembly line management, or Airplanes lining up for takeoff.
+
+The screen data structure is essentially a matrix. The uses for matrices seem to be 
+quite vast. However, some simple examples could be plotting points on a map, or 
+other similar node/plots uses.
