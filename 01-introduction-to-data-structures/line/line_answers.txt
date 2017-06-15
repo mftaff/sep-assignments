@@ -1,0 +1,13 @@
+For line.join:
+
+It seemed simple enough to just append new people to the end of the 
+members array. I also added a call to a private function in order to verify that the
+person variable is a proper Person object.
+
+For line.leave:
+
+Originally I was using the built-in .delete but after checking the docs: 
+https://ruby-doc.org/core-2.2.0/Array.html#method-i-delete It seemed like a lot
+of code was being run, so I went ahead a wrote a (hopefully) simpler loop.
+
+We can use a binary search!! using the index of member!!
