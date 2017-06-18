@@ -31,7 +31,7 @@ class LinkedList
     else
       temp = @head
       while @head
-        if @head.next.next == nil
+        if not @head.next.next
           @head.next = nil
           @tail = @head
           break
@@ -61,7 +61,7 @@ class LinkedList
       while @head
         if @head.next == node
           @head.next = node.next
-          @tail = @head if node.next == nil
+          @tail = @head if not node.next
           break
         end
         @head = @head.next
@@ -80,5 +80,41 @@ class LinkedList
   # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
   def remove_front
     @head = @head.next if @head
+  end
+  
+  # created this function for benchmarking, allows you to find a node by it's data
+  def find_node_by_data(data)
+    temp = @head
+    result = nil
+      while @head
+        if @head.data == data
+          result = @head
+          break
+        else
+          @head = @head.next
+        end
+      end
+      @head = temp
+      return result
+  end
+  
+  # created this function for benchmarking, deletes a node by data. NOT WELL MADE AT ALL!!
+  def delete_node_by_data(data)
+    temp = @head
+    result = nil
+      while @head
+        if @head.data == data
+          result = @head
+          res = @head.next = @head.next.next rescue true
+          if res 
+            @head.next = nil
+          end
+          break
+        else
+          @head = @head.next
+        end
+      end
+      @head = temp
+      return result
   end
 end

@@ -1,0 +1,25 @@
+1)
+
+Spacial Locality is the idea that data in storage should have spacial relativity. 
+This means that if I had an ordered list of integers and I know where 0 is, 
+I can find 1 right next to it, and 2 next to that etc. This allows data lookups to 
+be much quicker, as I can bring back data from memory enmasse to be accessed as 
+desired.
+
+2)
+
+Here are my benchmark results: 
+
+              user     system      total        real
+create array:  0.000000   0.000000   0.000000 (  0.001123)
+create llist:  4.840000   0.000000   4.840000 (  4.863292)
+access array:  0.000000   0.000000   0.000000 (  0.000004)
+access llist:  0.010000   0.000000   0.010000 (  0.000475)
+modify array:  0.000000   0.000000   0.000000 (  0.000028)
+modify llist:  0.000000   0.000000   0.000000 (  0.000588)
+
+
+Clearly based on my tests, it is far faster to work with an array. Most significantly 
+when it comes to building a new one. 
+
+(NOTE: the llist tests, were based on my implementation which were not optimized at all)

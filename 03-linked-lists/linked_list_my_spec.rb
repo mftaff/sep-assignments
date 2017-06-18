@@ -105,4 +105,30 @@ RSpec.describe LinkedList, type: Class do
       expect(llist.head).to eq nil
     end
   end
+  
+  describe "#find_node_by_data" do
+    it "returns the node that matches requested data" do
+      llist.add_to_tail(n1)
+      llist.add_to_tail(n2)
+      llist.add_to_tail(n3)
+      
+      expect(llist.find_node_by_data("Mike")).to eq n3
+      expect(llist.find_node_by_data("Ben")).to eq n2
+      expect(llist.find_node_by_data("Rob")).to eq n1
+      expect(llist.find_node_by_data("John")).to eq nil
+    end
+  end  
+  
+  describe "#delete_node_by_data" do
+    it "deletes a node based on data and returns deleted node" do
+      llist.add_to_tail(n1)
+      llist.add_to_tail(n2)
+      llist.add_to_tail(n3)
+      
+      expect(llist.delete_node_by_data("Mike")).to eq n3
+      expect(llist.delete_node_by_data("Ben")).to eq n2
+      expect(llist.delete_node_by_data("Rob")).to eq n1
+      expect(llist.delete_node_by_data("John")).to eq nil
+    end
+  end
 end
