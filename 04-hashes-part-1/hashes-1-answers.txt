@@ -1,0 +1,22 @@
+It seems that choosing to arbitrarily double the size of an array is not very
+efficient. In simple terms this is because our hash algorithm is as follows:
+
+take ascii value of key divide by array size take remainder
+
+However if the array size is anything but a prime number than it is going to
+generate duplicates rather often. On top of that having it as an even number allows
+it to always be divisible by 2, which further ensures that it will create 
+duplicates. 
+
+In our example the numbers are as follows:
+
+with 6 total entries we have this pattern:
+
+array size = 6  we store 2 items
+collision on item 3
+array size = 12 we store 2
+collistion on item 3
+array size = 24 we store 6 items
+
+this means that our array is 4 times bigger than it needs to be. This is not a 
+good alocation of resources.
