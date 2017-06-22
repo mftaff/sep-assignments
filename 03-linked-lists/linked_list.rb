@@ -6,42 +6,64 @@ class LinkedList
 
   # This method creates a new `Node` using `data`, and inserts it at the end of the list.
   def add_to_tail(node)
-    if not @head
-      @head = node
-      @tail = @head
-    else
-      temp = @head
-      while @head
-        if not @head.next
-          @head.next = node
-          @tail = @head.next
-          break
-        end
-        @head = @head.next
-      end
-      @head = temp
-    end
+    @head ||= node
+    @tail.next = node if @tail
+    @tail = node
+    @tail.next = nil
   end
+  
+  
+  # def add_to_tail(node)
+  #   if not @head
+  #     @head = node
+  #     @tail = @head
+  #   else
+  #     temp = @head
+  #     while @head
+  #       if not @head.next
+  #         @head.next = node
+  #         @tail = @head.next
+  #         break
+  #       end
+  #       @head = @head.next
+  #     end
+  #     @head = temp
+  #   end
+  # end
 
   # This method removes the last node in the lists and must keep the rest of the list intact.
   def remove_tail
-    if @head == @tail
+    if not @head.next
       @head = nil
       @tail = nil
     else
       temp = @head
-      while @head
-        if not @head.next.next
-          @head.next = nil
-          @tail = @head
-          break
-        else
-          @head = @head.next
-        end
+      while(temp.next.next)
+        temp = temp.next
       end
-      @head = temp
+      temp.next = nil
+      @tail = temp
     end
   end
+  
+  # def remove_tail
+  #   if @head == @tail
+  #     @head = nil
+  #     @tail = nil
+  #   else
+  #     temp = @head
+  #     while @head
+  #       if not @head.next.next
+  #         @head.next = nil
+  #         @tail = @head
+  #         break
+  #       else
+  #         @head = @head.next
+  #       end
+  #     end
+  #     @head = temp
+  #   end
+  # end
 
   # This method prints out a representation of the list.
   def print

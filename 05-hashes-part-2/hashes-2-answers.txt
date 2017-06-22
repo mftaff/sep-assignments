@@ -1,0 +1,33 @@
+Here are 3 possible collision resolution strategies: 
+
+1) coalesced hashing: Basically a mix between seperate chaining and linear 
+probing. Where instead of creating a linked list for conflicting keys, you just
+an empty bucket onto the first bucket.
+
+2) Hopscotch hashing: breaks a hash up into smaller groups, if any group exceeds
+the load factor than the whole hash is resized.
+
+3) 2-choice-hashing: unlike double hashing which uses the second hash to determine 
+the interval for an open address format. 2-choice-hashing just uses to independant
+hash functions A, and B. if A creates a collision, it tries B, if B collides it
+resizes.
+
+
+
+If I had to create my own collision resolution strategy, here is what I might
+come up with:
+
+create a hash algorithm that creates knowable dead-zones. (e.x if arr.length is 20
+the algorithm would never map a key into range (3..8)). 
+
+Some math would need to be done to create a good ratio for the size of the deadzone
+vs the liklihood of collision.
+
+Ideally we would want: for some array size S --> (amount of likely collisions until load factor
+is exceeded) ~~ (size of deadzone)
+
+we would also want to limit the size of the deadzone to be such that a linear
+search will be close to constant time, or at least theta(lgN)
+
+resize the hash once deadzone is full or load factor is exceeded.
+
