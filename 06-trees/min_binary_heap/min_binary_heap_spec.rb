@@ -92,35 +92,65 @@ RSpec.describe MinBinaryHeap, type: Class do
     it "handles nil gracefully" do
       expect(heap.delete(root, nil)).to eq nil
     end
+    
+    it "properly deletes the root" do
+      heap.delete(root, root.title)
+      
+      expected_output = "Pacific Rim: 72\nBraveheart: 78\nStar Wars: Return of the Jedi: 80\nDonnie Darko: 85\nInception: 86\nDistrict 9: 90\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: A New Hope: 93\nStar Wars: The Empire Strikes Back: 94\nMad Max 2: The Road Warrior: 98\n"
+      expect { heap.printf }.to output(expected_output).to_stdout
+      
+      expect(heap.root).to eq pacific_rim
+      expect(heap.find(@root, root.title)).to be_nil
+    end
 
     it "properly deletes a left node" do
       heap.delete(root, pacific_rim.title)
-      expect(heap.find(root, pacific_rim.title)).to be_nil
+      
+      expected_output = "The Matrix: 67\nBraveheart: 78\nStar Wars: Return of the Jedi: 80\nDonnie Darko: 85\nInception: 86\nDistrict 9: 90\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: A New Hope: 93\nStar Wars: The Empire Strikes Back: 94\nMad Max 2: The Road Warrior: 98\n"
+      expect { heap.printf }.to output(expected_output).to_stdout
+      
+      expect(heap.root.left.title).to eq "Braveheart"
+      expect(heap.find(@root, pacific_rim.title)).to be_nil
     end
 
     it "properly deletes a left-left node" do
       heap.delete(root, jedi.title)
-      expect(heap.find(root, jedi.title)).to be_nil
+      
+      expected_output = "The Matrix: 67\nPacific Rim: 72\nBraveheart: 78\nDonnie Darko: 85\nInception: 86\nDistrict 9: 90\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: A New Hope: 93\nStar Wars: The Empire Strikes Back: 94\nMad Max 2: The Road Warrior: 98\n"
+      expect { heap.printf }.to output(expected_output).to_stdout
+      
+      expect(heap.root.left.left.title).to eq "Donnie Darko"
+      expect(heap.find(@root, jedi.title)).to be_nil
     end
 
     it "properly deletes a left-right node" do
       heap.delete(root, donnie.title)
-      expect(heap.find(root, donnie.title)).to be_nil
+      
+      expected_output = "The Matrix: 67\nPacific Rim: 72\nBraveheart: 78\nStar Wars: Return of the Jedi: 80\nInception: 86\nDistrict 9: 90\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: A New Hope: 93\nStar Wars: The Empire Strikes Back: 94\nMad Max 2: The Road Warrior: 98\n"
+      expect { heap.printf }.to output(expected_output).to_stdout
+      
+      expect(heap.root.left.right.title).to eq "Inception"
+      expect(heap.find(@root, donnie.title)).to be_nil
     end
 
     it "properly deletes a right node" do
       heap.delete(root, braveheart.title)
-      expect(heap.find(root, braveheart.title)).to be_nil
+      expect(heap.find(@root, braveheart.title)).to be_nil
     end
 
     it "properly deletes a right-left node" do
       heap.delete(root, inception.title)
-      expect(heap.find(root, inception.title)).to be_nil
+      expect(heap.find(@root, inception.title)).to be_nil
     end
 
     it "properly deletes a right-right node" do
       heap.delete(root, district.title)
-      expect(heap.find(root, district.title)).to be_nil
+      
+      expected_output = "The Matrix: 67\nPacific Rim: 72\nBraveheart: 78\nStar Wars: Return of the Jedi: 80\nDonnie Darko: 85\nInception: 86\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: A New Hope: 93\nStar Wars: The Empire Strikes Back: 94\nMad Max 2: The Road Warrior: 98\n"
+      expect { heap.printf }.to output(expected_output).to_stdout
+      
+      expect(heap.root.right.right.title).to eq "The Shawshank Redemption"
+      expect(heap.find(@root, district.title)).to be_nil
     end
   end
 
