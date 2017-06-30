@@ -46,7 +46,7 @@ RSpec.describe KevinBaconGraph, type: Class do
         }
     }
 
-    let (:graph) { KevinBaconGraph.new(films, actors) }
+    let (:graph) { KevinBaconGraph.new(films, actors, kevin) }
     
     describe "graph building" do
         it "creates a new graph" do
