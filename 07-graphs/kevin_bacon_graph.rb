@@ -18,44 +18,42 @@ class KevinBaconGraph
         if actor_node
             return actor_node.bacon_num if actor_node.bacon_num
 
-            check_movies_actors(get_actor_connections(@kevin_bacon, nil), "Kevin Bacon", target_actor, 0)
-        end
-    end
-    
-    def validate_and_get_actor(actor)
-        @actor_hash[actor.to_sym] if actor.is_a?(String) && @actor_hash[actor.to_sym]
-    end
-    
-    def check_movies_actors(actors, root_name, target_name, degree)
-        last_actor = actors.last
+            actors = get_actor_connections(@kevin_bacon)
+            last_actor = actors.last
+            degree = 0
 
-        actors.each do |a|
-            actor = @actor_hash[a.to_sym]
-            next if actor.name == root_name
-    
-            if actor.name == target_name
-                actor.bacon_num = degree
-                return degree
-            else
-                get_actor_connections(actor, @film_actor_hash.key(actors).to_s).each do |act|
-                    actors << act if not actors.include? act
+            actors.each do |a|
+                actor = @actor_hash[a.to_sym]
+        
+                if actor.name == target_actor
+                    actor.bacon_num = degree
+                    return degree
+                else
+                    get_actor_connections(actor).each { |act| actors << act if not actors.include? act }
+                end
+                
+                if a == last_actor
+                    degree += 1
+                    return "no match within 6 degrees" if degree == 6
+                    last_actor = actors.last
                 end
             end
-            
-            if a == last_actor
-                degree += 1
-                return "no match within 6 degrees" if degree == 6
-                last_actor = actors.last
-            end
+            "no match within 6 degrees"
         end
-        "no match within 6 degrees"
     end
     
-    def get_actor_connections(actor, curr_movie)
+    # returns actor node if actor_name is a valid data_type. (rescue covers .to_sym being called on a non-string)
+    def validate_and_get_actor(actor)
+        @actor_hash[actor.to_sym] if @actor_hash[actor.to_sym] rescue false
+    end 
+    
+    # given an actor_node returns all his further connections as an array of strings (names)
+    # actor -> An actor Node
+    # curr_movie -> string that equals key of 
+    def get_actor_connections(actor)
         connections = []
         actor.movies.each do |movie|
-            next if movie == curr_movie
-            @film_actor_hash[movie.to_sym].map { |act| connections << act.name if act != actor && act.name != "Kevin Bacon"}
+            @film_actor_hash[movie.to_sym].each { |act| connections << act.name if act != actor and act.name != "Kevin Bacon" }
         end
         connections
     end
