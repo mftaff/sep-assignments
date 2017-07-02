@@ -1,0 +1,44 @@
+1) Here are 3 psuedo-code algorithms that one might use in real life:
+
+ A) RINSE
+    LATHER
+    REPEAT
+    (hahahaha I couldn't resist)
+
+ A) Factorial PUSH-UPs (starting_number)
+    SET push_up_count equal to starting_number 
+    
+    WHILE push_up_count is greater than zero
+        FOR number in push_up_count
+            DO push up
+        ENDFOR
+        DECREMENT push_up_count by one
+    ENDWHILE
+    
+ B) DRINK WATER
+    GET container of water
+    
+    IF container is sealed
+        DO open container
+    ENDIF
+    
+    DO bring container opening to mouth
+    DO tilt container so water flows from container to mouth
+    
+    WHILE container still has water in it
+        DO keep container tilted 
+        (maybe add a integral function to determine the required tilt angle)
+    ENDWHILE
+ 
+ C) Wax on | Wax off
+    GET sponge is left hand
+    GET rag in right hand
+    
+    WHILE the sun is still in the sky
+        DO dip sponge in wax container
+        
+        DO apply wax in counter-clockwise motion
+        DO rub-in wax with rag using clockwise motion
+        
+        DO breathe!
+    ENDWHILE
