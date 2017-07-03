@@ -1,0 +1,30 @@
+1) If we have an array of: [A, B, C, D, E, F, G] than it will take 7 iterations
+to find G. This is the worst-case for linear search, and it will take theta(n) time
+to solve.
+
+2) If we search the above array using a binary search than it will take 3 iterations.
+this is also the worst-case for a binary search. However, here the time needed is:
+theta(lg(n)) this is MUCH faster than linear time. as it is the log of n as opposed 
+to n.
+
+3) 
+
+         n-2 n-1 result
+fib(10) = 21  34  55
+
+fib(11) = 34  55  89
+
+fib(12) = 55  89  144
+
+
+1a) for an unsorted collection of 1 million items I would use a linear iterative
+search. The reason I wouldn't use a binary search is that it will not work with an 
+unsorted collection. The reason I would use iterative is because it performed faster
+when tested for the fibonacci sequence. I think that was because it was of a linear 
+nature, which recursive functions are not as efficient at.
+
+2b) for a sorted collection of 1 million items I would use a binary recursive search.
+The reason I would use a binary search here is because the collection is sorted and
+binary search is a faster algorithm than linear search. Also recursive calls here 
+would be quite efficient as we want to do the same halving process over and over
+until the collection hits a base case of 1 item large.
