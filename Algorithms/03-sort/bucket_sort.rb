@@ -16,7 +16,7 @@ end
 
 # test
 
-arr = [3, 4, 6, 2, 1, 7, 9, 10, 5, 8]
+# arr = [3, 4, 6, 2, 1, 7, 9, 10, 5, 8]
 
-# bucket_sort(arr)
-puts "\nafter bucket srt: #{bucket_sort(arr)}"
+# # bucket_sort(arr)
+# puts "\nafter bucket srt: #{bucket_sort(arr)}"

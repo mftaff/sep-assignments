@@ -1,0 +1,25 @@
+
+Test for 2000 items
+mftaff:~/workspace/Algorithms/03-sort (03-sort) $ ruby benchmarks.rb 
+              user     system      total        real
+quick sort:  0.010000   0.000000   0.010000 (  0.010031)
+buckt sort:  0.000000   0.000000   0.000000 (  0.001326)
+heap  sort:  5.100000   0.000000   5.100000 (  5.126910)
+
+
+test for 3000 items
+mftaff:~/workspace/Algorithms/03-sort (03-sort) $ ruby benchmarks.rb 
+              user     system      total        real
+quick sort:  0.020000   0.000000   0.020000 (  0.018018)
+buckt sort:  0.000000   0.000000   0.000000 (  0.002471)
+heap  sort: 17.890000   0.060000  17.950000 ( 18.336339)
+
+
+As you can see my heap sort is rather poorly designed, I think it grows at around n^2
+and also suprisingly the bucket sort seems to be faster than quick sort, which would make
+one question the name 'quick_sort'. 
+
+NOTE: quick_sort is the only function of the 3, that sorts in-place. Meaning you 
+can just call the funtion and it sorts the array. Whereas, the other 2 you need to
+assign the result back onto the array.
+NOTE: I checked the arrays after the functions were called, and they were sorted.

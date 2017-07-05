@@ -94,7 +94,7 @@ class MinBinaryHeap
   def get_parent_row(root, node)
     root == @root ? parent_row = [root] : parent_row = root
     child_row = []
-    puts "node: #{node.inspect}"
+
     parent_row.each do |curr_node|
       if curr_node.left == node
         return parent_row
