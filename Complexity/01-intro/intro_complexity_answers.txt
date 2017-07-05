@@ -1,0 +1,54 @@
+1) An algorithm with an efficiency of O(1) is extremely fast, and stays that way. Imagine
+a speeding comet with no interacting forces. Whereas, an algorithm with efficiency 
+O(2^n) starts sluggish, and almost instantly slows to the point of stopped. Think 
+a bullet flying through water.
+
+2) The best case scenario for a binary search should be linear time. This would
+be true when the first midpoint selected happens to be the target.
+
+3) The worst case scenario for a binary search is logarithmic time. This would be
+true if the array needs to be halved down until only one item remains - the target.
+
+4) The bounded case for a binary search is probably slightly faster than logarithmic
+time. This is probably because the average of logarithmic and constant time, leans 
+above 50%.
+
+5)
+--------------------
+| n  |  iterations |
+--------------------
+| 0  |  	1      |   
+| 1  |  	2      |   
+| 2  |  	4      |   
+| 3  |  	8      |   
+| 4  |  	16     |   
+| 5  |  	32     |   
+| 6  |  	64     |   
+| 7  |  	128    |   
+| 8  |  	256    |   
+| 9  |  	512    |   
+| 10 |  	1024   |       
+--------------------
+
+6) the limit as n approaches infinity is infinity
+
+7) O(n^2)
+
+8,9) 
+----------------------
+|  n    | iterations |
+----------------------
+| 10    |   10       |
+| 20    |   20       | 
+| 50    |   50       | 
+| 100   |   100      |
+| 500   |   500      |
+| 1000  |   1000     |
+| 10000 |   10000    |
+----------------------
+
+10) O(lg(n))
+
+11) Omega(1)
+
+12) Theta(lg(n))
