@@ -1,0 +1,62 @@
+1) The function goodbye_world has a upper bound of O(1). It is a constant time function,
+as can be proved by the fact, that no matter what you assign n to be, the function
+will always just print out a single line. Here is an interesting benchmark:
+
+Benchmark test of goodbye_world(n="a")
+user     system      total        real
+0.000000   0.000000   0.000000 (  0.000038)
+
+
+Benchmark test of goodbye_world(n="a"*1_000_000)
+user     system      total        real
+0.000000   0.010000   0.010000 (  0.707356)
+
+If we compare the two, we find that in the time it takes to run the longer n, 
+we could have run the smaller n 18,615 times! or 0.707356 / 0.000038 = 18614.631
+Obviously even though the difference between them is massive, they are stil both running in 
+under a second. But this does make me wonder if the lower order factors (as in the 
+x or 3 of x^2 + x + 3) mean so little, that they can be ignored! I suppose in the context
+of the higher order factor, they can and it is only amongst it's own kind that it is
+an issue. I see.
+
+2) The function find_largest(collection) has a big-O of: O(n). Let us examine the code:
+(firstly we initialize the function, but only once, so that is a small constant)
+At line 1 we assign largest to the first item in collection. this is constant.
+next we iterate through the collection. this requires linear time.
+at each iteration we apply a simple comparison. this is also constant, but it is 
+run n times. 
+finally we return largest.
+
+If we add all this up we get something like: A(n) + B 
+where A and B are our constants, and n is the number of iterations we need to does
+which is of course 1:1 with the length of the collection! Thus we arrive at O(n).
+
+3) The function find_largest_2D(collection) has a big-O of: O(nk). This code is 
+the same as question two EXCEPT that we need to run a second loop of each subarray.
+This is where I am a bit unsure. If we also call that second loop's iterations n,
+than we have n iterations on collection each requiring n iterations of subarray. 
+This would mean a big-O of O(n*n) or O(n^2), however if the subarray if some other
+value say k than we would have a big-O of O(n*k)
+
+4) The function numbers_recursive(n) has a big-O of: O(n). 
+
+for the inputs 1, 2, 3, 4, 5 I got the following iterations: 1, 3, 5, 9, 15
+the one is a unique case because we handle 1 and 0 by returning right away. However,
+there is a pattern to the 3, 5, 9, 15. It is add 2 to total iterations per iteration,
+so add 2, then 4, then 6, then 8, then 10, etc. I think this is still considered a 
+linear equation, I think the equation looks something like 3 + 2x - x. which evaluates
+to linear time.
+
+5) The function numbers_iterative(n) has a big-O of: O(n). this function has 
+a bunch of constants that we can ignore. However, the while loop though gets
+called n-1 times. the -1 we can add to the constants, and we are left with a big-O
+of O(n).
+
+6) The function sort(collection, from, to) has a big-O of O(n^2). This function is
+a quick_sort function. This means that we will pick a pivot and make a left and right
+side. ideally each of those sides should be equal. The worst case, however, is when
+one side gets all the numbers minus the pivot. This would mean that each iteration would
+have to deal with n-1 items. this gives a series of time something like: 
+(n-1) + (n-2) + (n-3) which if we do some math results in (n+1)(n/2) or n^2/2 + n/2
+We can drop all the low order terms, and we are left with O(n^2).
+
