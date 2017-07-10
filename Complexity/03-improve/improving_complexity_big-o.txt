@@ -1,0 +1,37 @@
+Here are the benchmark results for the four versions. 
+Note we tested this with an array of 4 arrays, with each
+array containing 10_000 numbers for a total of 0 to 39,999
+
+          user     system      total        real
+v0:  29.810000   0.060000  29.870000 ( 29.956187)
+v1:  30.930000   0.050000  30.980000 ( 31.057341)
+v2:   0.020000   0.000000   0.020000 (  0.023473)
+v3:   0.020000   0.000000   0.020000 (  0.021805)
+
+          user     system      total        real
+v0:  33.800000   0.090000  33.890000 ( 33.972782)
+v1:  30.070000   0.080000  30.150000 ( 30.243459)
+v2:   0.010000   0.000000   0.010000 (  0.017883)
+v3:   0.010000   0.000000   0.010000 (  0.016940)
+
+big-O for v0: O(n^2) 
+big-O for v1: O(n^2)
+big-O for v2: O(n)
+big-O for v3: O(n)
+
+NOTE: My benchmarks need a grain of salt. The standard deviation for any given test,
+even when given the same arrays, was too great to prove if any optimizations were
+indeed faster.
+NOTE: in v1 I got faster run times only about 60% of the time. see above note.
+
+
+for v0 and v1 we are using insertion sort to sort an array. the full algorithm is 
+something like n^2 + n + C. where n^2 is the time needed for the sorting, and n
+is the time needed to un-nest the arrays into one big one. (C is the constants)
+
+for v3 and v4 we are using bucket sort to sort an array. the full algorithm is 
+something like n + n + C. where the first n is for getting a full array, and the 
+second n is the time needed to bucket sort. This is very vague, because my test cases
+where rather easy, as there were no duplicates or spaces. Because of this the worst 
+case was not n^2 like it is in practice.
+
